@@ -28,3 +28,22 @@ export interface ITitle {
   }
 
   
+export interface IPasswordInput {
+    ref?: RefObject<HTMLInputElement>;
+    showFocus?: boolean;
+    className?: string;
+    defaultValue?: string;
+    readonly?: boolean;
+    id?: string;
+    hasIcon?: boolean;
+    icon?: string;
+    name?: string;
+    placeholder?: string;
+    autoComplete?: boolean;
+    onChange(e: ChangeEvent<HTMLInputElement>): void;
+  }
+
+  export interface IButton {
+    text: string;
+    onClick(e: any): void;
+  }
