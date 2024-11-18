@@ -1,5 +1,14 @@
 import { ChangeEvent, RefObject } from "react";
 
+export interface IStorage {
+    keepData(key: string, data: object | string): void;
+    fetchData(key: string): string | null;
+  }
+  
+  export interface INoteStorage {
+    keepNote(key: string, data: object | string): void;
+    fetchNote(key: string): string | null;
+  }
 export interface ITitle {
     text: string;
     size?: string;
