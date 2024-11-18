@@ -47,3 +47,21 @@ export interface IPasswordInput {
     text: string;
     onClick(e: any): void;
   }
+  export interface IIconButton {
+    width?: string;
+    height?: string;
+    icon: {
+      type: "web" | "image";
+      name?: string;
+      url?: string;
+      width?: string;
+      height?: string;
+    };
+  }
+  
+  export interface INavButton {
+    link?: string,
+    icon: string,
+    text: string
+  }
+  
