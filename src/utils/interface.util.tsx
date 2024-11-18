@@ -10,3 +10,21 @@ export interface ITitle {
     };
   }
   
+  export interface ITextInput {
+    type: "email" | "text" | "textarea";
+    ref?: RefObject<HTMLInputElement>;
+    showFocus?: boolean;
+    className?: string;
+    defaultValue?: string;
+    readonly?: boolean;
+    id?: string;
+    hasIcon?: boolean;
+    icon?: string;
+    name?: string;
+    placeholder?: string;
+    value?: string
+    autoComplete?: boolean;
+    onChange(e: ChangeEvent<HTMLInputElement>): void;
+  }
+
+  
