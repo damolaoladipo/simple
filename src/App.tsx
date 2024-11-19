@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
+import Welcome from "./pages/auth/Welcome";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import Home from "./pages/Home/Homepage";
 
-function App() {
+
+
+
+
+
+//pages
+
+const Login = React.lazy(() => import("./pages/auth/Login"));
+
+const App = () => {
+  const errorHandler = (err: any, info: any) => {
+    console.log(err, "logged error");
+    console.log(info, "logged error info");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Router>
+      <Suspense fallback={<></>}>
+        <ErrorBoundary
+          FallbackComponent={() => <></>}
+          onReset={() => {
+            window.location.reload();
+          }}
+          onError={errorHandler}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          
+
+            <Route path="/register" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+          </Routes>
+        </ErrorBoundary>
+      </Suspense>
+    </Router>
   );
-}
+};
 
 export default App;
