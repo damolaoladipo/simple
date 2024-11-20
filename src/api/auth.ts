@@ -27,3 +27,13 @@ export const logout = async (): Promise<ILogoutResponse> => {
     throw new Error(error.response?.data?.message || 'Logout failed');
   }
 };
+
+export const ForgotPassword = async () => {
+  try {
+    const response = await apiClient.post('/auth/logout');
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.response?.data?.message || 'Logout failed');
+  }
+};
+

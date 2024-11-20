@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { register } from '../../api/auth';
+import { IRegister, IRegisterResponse } from '../../utils/interface.util';
 
 export const useRegister = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [response, setResponse] = useState<IRegisterResponse | null>(null);
 
-  const performRegister = async (userData: any) => {
+  const performRegister = async (userData: IRegister): Promise<void> => {
     setLoading(true);
     setError(null);
 
     try {
-      await axios.post('/api/auth/register', userData);
+     const isRegistered = await register(userData);
+     setResponse(isRegistered)
+
     } catch (err: any) {
       setError(err.response?.data?.message || 'Registration failed');
     } finally {
@@ -18,5 +22,5 @@ export const useRegister = () => {
     }
   };
 
-  return { performRegister, loading, error };
+  return { performRegister, loading, error, response };
 };

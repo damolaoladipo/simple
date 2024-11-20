@@ -1,34 +1,32 @@
 import { useState } from 'react';
-import { useAuthContext } from "./useAuthContext";
-import { ILogin } from "../../utils/interface.util";
+import { ILogin, ILoginResponse } from "../../utils/interface.util";
+import { login } from '../../api/auth';
+
 
 
 export const useLogin = () => {
-  const { login } = useAuthContext();
+  const [response, setResponse] = useState<ILoginResponse | null>(null);
+  const [authToken, setAuthToken] = useState<string | null>(localStorage.getItem('authToken') || null);
+  const [user, setUser] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const loginUser = async (loginData: ILogin) => {
+
+  const loginUser = async (loginData: ILogin ) => {
     setError(null);
     try {
-      const response = await fetch('/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      });
+      
+      const isLoggedIn = await login(loginData.email, loginData.password)
+        setResponse(isLoggedIn) 
 
-      const data = await response.json();
-
-      if (response.ok) {
-        login(data.data.authToken, data.data.user);
-      } else {
-        setError(data.message || 'Login failed');
-      }
-    } catch (err) {
-      setError('An error occurred');
+        setAuthToken(isLoggedIn.token);
+        setUser(isLoggedIn.user);
+        localStorage.setItem('authToken', isLoggedIn.token)
+      
+    } catch (err: any) {
+      setError(err.response?.data?.message  || 'An errror occured');
     }
   };
 
-  return { loginUser, error };
+  return { loginUser, error, response, authToken, user };
 };
+

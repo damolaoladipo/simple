@@ -122,7 +122,7 @@ export interface IPasswordInput {
     authToken: string | null;
     user: any | null;
     login: (authToken: string, user: any) => void;
-    logout: () => void;
+    logout: (message: string) => void;
   }
 
   export interface ILogin {
