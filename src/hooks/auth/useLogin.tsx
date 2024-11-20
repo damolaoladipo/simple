@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import { useAuth } from "../../context/authContext";
+import { useAuthContext } from "./useAuthContext";
+import { <ILogin></ILogin> } from "../../utils/interface.util";
 
-interface LoginData {
-  email: string;
-  password: string;
-}
 
 export const useLogin = () => {
-  const { login } = useAuth();
+  const { login } = useAuthContext();
   const [error, setError] = useState<string | null>(null);
 
-  const loginUser = async (loginData: LoginData) => {
+  const loginUser = async (loginData: ILogin) => {
     setError(null);
     try {
       const response = await fetch('/auth/login', {

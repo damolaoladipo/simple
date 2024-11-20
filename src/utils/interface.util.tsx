@@ -87,3 +87,16 @@ export interface IPasswordInput {
     slug: string,
     userType: UserType;
   }
+
+  export interface AuthContextType {
+    authToken: string | null;
+    user: any | null;
+    login: (authToken: string, user: any) => void;
+    logout: () => void;
+  }
+
+  export interface ILogin {
+    email: string;
+    password: string;
+  }
+  
