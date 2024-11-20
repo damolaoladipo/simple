@@ -1,5 +1,5 @@
 import apiClient from './api';
-import { ILoginResponse, ILogoutResponse, IRegister, IRegisterResponse } from '../utils/interface.util'
+import { IForgotPasswordRequest, IForgotPasswordResponse, ILoginResponse, ILogoutResponse, IRegister, IRegisterResponse, IResetPasswordRequest, IResetPasswordResponse } from '../utils/interface.util'
 
 export const login = async (email: string, password: string): Promise<ILoginResponse> => {
   try {
@@ -28,12 +28,23 @@ export const logout = async (): Promise<ILogoutResponse> => {
   }
 };
 
-export const ForgotPassword = async () => {
+
+export const forgotPassword = async (data: IForgotPasswordRequest): Promise<IForgotPasswordResponse> => {
   try {
-    const response = await apiClient.post('/auth/logout');
+    const response = await apiClient.post<IForgotPasswordResponse>('/auth/forgot-password', data);
     return response.data;
   } catch (error: any) {
-    throw new Error(error.response?.data?.message || 'Logout failed');
+    throw new Error(error.response?.data?.message || 'Failed to initiate password reset');
+  }
+};
+
+
+export const resetPassword = async (data: IResetPasswordRequest): Promise<IResetPasswordResponse> => {
+  try {
+    const response = await apiClient.post<IResetPasswordResponse>('/auth/reset-password', data);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.response?.data?.message || 'Failed to reset password');
   }
 };
 

@@ -1,29 +1,26 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { forgotPassword } from '../../api/auth';
+import { IForgotPasswordRequest, IForgotPasswordResponse } from '../../utils/interface.util';
 
 export const useForgotPassword = () => {
-    const [error, setError] = useState<string | null>(null);
-  
-    const forgotPassword = async (email: string) => {
-      setError(null); 
-      try {
-        const response = await fetch('/auth/forgot-password', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email }),
-        });
-  
-        const data = await response.json();
-  
-        if (!response.ok) {
-          setError(data.message || 'Failed to send reset link');
-        }
-      } catch (err) {
-        setError('An error occurred');
-      }
-    };
-  
-    return { forgotPassword, error };
+  const [response, setResponse] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const initiateForgotPassword = async (email: string) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const data: IForgotPasswordRequest = { email };
+      const result: IForgotPasswordResponse = await forgotPassword(data);
+      setResponse(result.message);
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to initiate password reset');
+    } finally {
+      setLoading(false);
+    }
   };
-  
+
+  return { initiateForgotPassword, error, loading, response };
+};

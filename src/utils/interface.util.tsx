@@ -118,6 +118,25 @@ export interface IPasswordInput {
     message: string;
   }
 
+export interface IForgotPasswordRequest {
+  email: string;
+}
+
+export interface IForgotPasswordResponse {
+  message: string; 
+}
+
+export interface IResetPasswordRequest {
+  token: string; 
+  newPassword: string;
+}
+
+
+export interface IResetPasswordResponse {
+  message: string; 
+}
+
+
   export interface AuthContextType {
     authToken: string | null;
     user: any | null;
