@@ -20,7 +20,7 @@ export interface ITitle {
     };
   }
   
-  export interface ITextInput {
+export interface ITextInput {
     type: "email" | "text" | "textarea";
     ref?: RefObject<HTMLInputElement>;
     showFocus?: boolean;
@@ -37,7 +37,6 @@ export interface ITitle {
     onChange(e: ChangeEvent<HTMLInputElement>): void;
   }
 
-  
 export interface IPasswordInput {
     ref?: RefObject<HTMLInputElement>;
     showFocus?: boolean;
@@ -53,11 +52,11 @@ export interface IPasswordInput {
     onChange(e: ChangeEvent<HTMLInputElement>): void;
   }
 
-  export interface IButton {
+export interface IButton {
     text: string;
     onClick(e: any): void;
   }
-  export interface IIconButton {
+export interface IIconButton {
     width?: string;
     height?: string;
     icon: {
@@ -69,14 +68,14 @@ export interface IPasswordInput {
     };
   }
   
-  export interface INavButton {
+export interface INavButton {
     link?: string,
     icon: string,
     text: string
   }
   
-  export type UserType = 'admin' | 'user';
-  export interface IUser {
+export type UserType = 'admin' | 'user';
+export interface IUser {
     username:  string,
     displayName: string
     email: string,
@@ -88,18 +87,24 @@ export interface IPasswordInput {
     userType: UserType;
   }
 
-  export interface ApiResponse<T> {
+export interface ApiResponse<T> {
     data: T;
   }
 
-  export interface IRegister {
+export interface IRegister {
     username: string;
     displayName: string;
     email: string;
     password: string;
   }
   
-  export interface ILoginResponse {
+
+export interface ILogin {
+    email: string;
+    password: string;
+  }
+
+export interface ILoginResponse {
     token: string;
     user: {
       id: string;
@@ -108,13 +113,13 @@ export interface IPasswordInput {
     };
   }
   
-  export interface IRegisterResponse {
+export interface IRegisterResponse {
     id: string;
     username: string;
     email: string;
   }
   
-  export interface ILogoutResponse {
+export interface ILogoutResponse {
     message: string;
   }
 
@@ -137,19 +142,13 @@ export interface IResetPasswordResponse {
 }
 
 
-  export interface AuthContextType {
+export interface AuthContextType {
     authToken: string | null;
     user: any | null;
     login: (authToken: string, user: any) => void;
     logout: (message: string) => void;
   }
-
-  export interface ILogin {
-    email: string;
-    password: string;
-  }
-
-  export interface UserContextType {
+export interface UserContextType {
     users: any[];
     loading: boolean;
     error: string | null;
@@ -157,5 +156,17 @@ export interface IResetPasswordResponse {
     setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
     updateUser: (userId: string, updatedData: any) => void;
     deleteUser: (userId: string) => void;
+  }
+  
+
+  export interface ITransaction {
+    userId: string
+    type: 'income' | 'expense'
+    description: string
+    amount: number
+    category: string
+    paymentMethod: 'cash' | 'credit card' | 'bank transfer' | 'mobile payment'
+    status: 'completed' | 'pending' | 'failed'
+    currency: string
   }
   

@@ -1,5 +1,13 @@
 import apiClient from './api';
-import { IForgotPasswordRequest, IForgotPasswordResponse, ILoginResponse, ILogoutResponse, IRegister, IRegisterResponse, IResetPasswordRequest, IResetPasswordResponse } from '../utils/interface.util'
+import { 
+  IForgotPasswordRequest, 
+  IForgotPasswordResponse, 
+  ILoginResponse, 
+  ILogoutResponse, 
+  IRegister, 
+  IRegisterResponse, 
+  IResetPasswordRequest, 
+  IResetPasswordResponse } from '../utils/interface.util'
 
 export const login = async (email: string, password: string): Promise<ILoginResponse> => {
   try {

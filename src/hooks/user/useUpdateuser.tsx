@@ -9,7 +9,6 @@ export const useUpdateUser = () => {
 
   const updateUser = async (userId: string, updatedData: any) => {
     setLoading(true);
-    
     try {
       const updatedUser = await updateUserById(userId, updatedData);
       setUpdatedUser(updatedUser);
