@@ -1,22 +1,25 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { updateUserById } from '../../api/user'; 
+import { IUser } from '../../utils/interface.util'; 
 
 export const useUpdateUser = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [updatedUser, setUpdatedUser] = useState<any | null>(null);
+  const [updatedUser, setUpdatedUser] = useState<IUser | null>(null);
 
   const updateUser = async (userId: string, updatedData: any) => {
     setLoading(true);
+    
     try {
-      const response = await axios.put(`/users/${userId}`, updatedData);
-      setUpdatedUser(response.data);
+      const updatedUser = await updateUserById(userId, updatedData);
+      setUpdatedUser(updatedUser);
+
     } catch (err) {
       setError('Error updating user');
     } finally {
       setLoading(false);
     }
-  };
+  }; 
 
   return { updateUser, updatedUser, loading, error };
 };

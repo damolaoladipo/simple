@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { deleteUserById } from '../../api/user';
 
 export const useDeleteUser = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -8,9 +8,11 @@ export const useDeleteUser = () => {
 
   const deleteUser = async (userId: string) => {
     setLoading(true);
+
     try {
-      await axios.delete(`/users/${userId}`);
-      setMessage('User deleted successfully');
+      const deletedUser = await deleteUserById(userId)
+      setMessage( deletedUser.message || 'User deleted successfully');
+
     } catch (err) {
       setError('Error deleting user');
     } finally {
