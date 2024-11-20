@@ -21,5 +21,5 @@ export const useTransactions = (userId: string) => {
     }
   };
 
-  return { transactions, fetchTransactions, loading, error };
+  return { fetchTransactions, transactions, loading, error };
 };

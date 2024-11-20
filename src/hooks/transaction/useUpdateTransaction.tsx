@@ -9,7 +9,7 @@ export const useUpdateTransaction = () => {
 
   const updateTransaction = async (id: string, updatedData: any) => {
     setLoading(true);
-    try {
+    try { 
       const updated = await updateTransactionById(id, updatedData);
       setUpdatedTransaction(updated);
       

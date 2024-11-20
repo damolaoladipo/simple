@@ -4,7 +4,7 @@ import { deleteTransactionById } from '../../api/transaction';
 export const useDeleteTransaction = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [isDeleted, setIsDeleted] = useState<boolean>(false);
+  const [DeletedTransaction, setDeletedTransaction] = useState<boolean>(false);
   const [message, setMessage] = useState<string | null>(null);
 
   const deleteTransaction = async (id: string) => {
@@ -12,7 +12,7 @@ export const useDeleteTransaction = () => {
     try {
 
       const deleted = await deleteTransactionById(id);
-      setIsDeleted(true);
+      setDeletedTransaction(true);
       setMessage( deleted.message || 'Transaction deleted successfully');
 
     } catch (err) {
@@ -22,5 +22,5 @@ export const useDeleteTransaction = () => {
     }
   };
 
-  return { deleteTransaction, isDeleted, message, loading, error };
+  return { deleteTransaction, DeletedTransaction, message, loading, error };
 };

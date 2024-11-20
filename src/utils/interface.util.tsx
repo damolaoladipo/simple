@@ -169,4 +169,19 @@ export interface UserContextType {
     status: 'completed' | 'pending' | 'failed'
     currency: string
   }
+
+  export interface TransactionContextType {
+    transaction: ITransaction | null;
+    transactions: ITransaction[] | null;
+    loading: boolean;
+    error: string | null;
+    fetchTransactions: (userId: string) => Promise<void>;
+    fetchTransactionById: (transactionId: string) => Promise<void>;
+    createTransaction: (transactionData: any) => Promise<void>;
+    updateTransaction: (id: string, updatedData: any) => Promise<void>;
+    deleteTransaction: (id: string) => Promise<void>;
+    setTransaction: React.Dispatch<React.SetStateAction<ITransaction | null>>;
+  }
+  
+  
   
