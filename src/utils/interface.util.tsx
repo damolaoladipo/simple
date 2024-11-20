@@ -136,7 +136,6 @@ export interface IPasswordInput {
     error: string | null;
     user: any | null;
     setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
-    createUser: (userData: any) => void;
     updateUser: (userId: string, updatedData: any) => void;
     deleteUser: (userId: string) => void;
   }
