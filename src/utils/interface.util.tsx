@@ -92,6 +92,32 @@ export interface IPasswordInput {
     data: T;
   }
 
+  export interface IRegister {
+    username: string;
+    displayName: string;
+    email: string;
+    password: string;
+  }
+  
+  export interface ILoginResponse {
+    token: string;
+    user: {
+      id: string;
+      username: string;
+      email: string;
+    };
+  }
+  
+  export interface IRegisterResponse {
+    id: string;
+    username: string;
+    email: string;
+  }
+  
+  export interface ILogoutResponse {
+    message: string;
+  }
+
   export interface AuthContextType {
     authToken: string | null;
     user: any | null;

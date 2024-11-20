@@ -1,5 +1,5 @@
-import { ApiResponse, IUser } from '../utils/interface.util';
 import apiClient from './api';
+import { ApiResponse, IUser } from '../utils/interface.util'
 
 export const getAllUsers = async (): Promise<IUser[]> => {
   try {
