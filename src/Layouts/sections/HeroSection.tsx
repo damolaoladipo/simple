@@ -9,8 +9,8 @@ const HeroSection: React.FC = () => {
             <div className="hero-content">
                 <div className="column-1">
                     <div className="hero-text">
-                        <h1>Note taking, made simple</h1>
-                        <p>Passionately made by student and for student. The all in one note taking app. </p>
+                        <h1>Your finance, made simple</h1>
+                        <p>Designed by GenZs, for GenZs. Manage your income and expenses, all in one place</p>
                         <Link to="/dashboard" className="button nav-signup">Try for free</Link>
                     </div>
     

@@ -1,5 +1,6 @@
 import { ChangeEvent, RefObject } from "react";
 
+
 export interface IStorage {
     keepData(key: string, data: object | string): void;
     fetchData(key: string): string | null;
@@ -74,3 +75,15 @@ export interface IPasswordInput {
     text: string
   }
   
+  export type UserType = 'admin' | 'member' | 'guest';
+  export interface IUser {
+    username:  string,
+    displayName: string
+    email: string,
+    password: string
+    badges: string[]
+    achievement: string[]
+    roles: string[]
+    slug: string,
+    userType: UserType;
+  }

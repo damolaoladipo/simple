@@ -12,17 +12,13 @@ const Header = () => {
         <nav>
           <a className="logo" href="/">
             <img
-              src={`${process.env.PUBLIC_URL}/images/assets/supernote.png`}
+              src={`${process.env.PUBLIC_URL}/images/assets/simple-white.png`}
               width="200"
               alt="supernote logo"
             />
           </a>
           <div className="navigation">
-            <a href="/moviedetails.html">Feature</a>
-            <a href="/tvshows">Pricing</a>
-            <a href="#top">Discover</a>
-            <a href="#top">About</a>
-            <a href="#top">More</a>
+
           </div>
           <div className="actions">
             <button className="button nav-signup">Sign Up</button>
