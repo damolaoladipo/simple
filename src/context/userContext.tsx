@@ -1,4 +1,6 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, ReactNode } from 'react';
+import { UserContextType } from '../utils/interface.util';
+
 import { useUsers } from '../hooks/user/useUsers';
 import { useUser } from '../hooks/user/useUser';
 import { useCreateUser } from '../hooks/user/useCreateUser';
@@ -6,22 +8,15 @@ import { useUpdateUser } from '../hooks/user/useUpdateuser';
 import { useDeleteUser } from '../hooks/user/useDeleteUser';
 
 
-interface UserContextType {
-  users: any[];
-  loading: boolean;
-  error: string | null;
-  user: any | null;
-  createUser: (userData: any) => void;
-  updateUser: (userId: string, updatedData: any) => void;
-  deleteUser: (userId: string) => void;
-}
+
+
 
 export const UserContext = createContext<UserContextType | undefined>(undefined);
 
 
-export const UserProvider = ({ children }: { children: ReactNode }) => {
+export const UserProvider = ({ children, userId, userType }: { children: ReactNode, userId: string, userType?: string }) => {
   const { users, loading, error } = useUsers();
-  const { user, setUser } = useState<any | null>(null);
+  const { user, loading: userLoading, error: userError } = useUser(userId, userType)
   
   const { createUser } = useCreateUser();
   const { updateUser } = useUpdateUser();
@@ -31,9 +26,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     <UserContext.Provider
       value={{
         users,
-        loading,
-        error,
+        loading: loading || userLoading,
+        error: error || userError,
         user,
+        setUser: () => {},
         createUser,
         updateUser,
         deleteUser,
@@ -42,13 +38,4 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </UserContext.Provider>
   );
-};
-
-
-export const useUserContext = (): UserContextType => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error('useUserContext must be used within a UserProvider');
-  }
-  return context;
 };

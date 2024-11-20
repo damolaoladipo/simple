@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from "./useAuthContext";
-import { <ILogin></ILogin> } from "../../utils/interface.util";
+import { ILogin } from "../../utils/interface.util";
 
 
 export const useLogin = () => {

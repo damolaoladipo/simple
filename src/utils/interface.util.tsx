@@ -75,7 +75,7 @@ export interface IPasswordInput {
     text: string
   }
   
-  export type UserType = 'admin' | 'member' | 'guest';
+  export type UserType = 'admin' | 'user';
   export interface IUser {
     username:  string,
     displayName: string
@@ -88,6 +88,10 @@ export interface IPasswordInput {
     userType: UserType;
   }
 
+  export interface ApiResponse<T> {
+    data: T;
+  }
+
   export interface AuthContextType {
     authToken: string | null;
     user: any | null;
@@ -98,5 +102,16 @@ export interface IPasswordInput {
   export interface ILogin {
     email: string;
     password: string;
+  }
+
+  export interface UserContextType {
+    users: any[];
+    loading: boolean;
+    error: string | null;
+    user: any | null;
+    setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
+    createUser: (userData: any) => void;
+    updateUser: (userId: string, updatedData: any) => void;
+    deleteUser: (userId: string) => void;
   }
   
