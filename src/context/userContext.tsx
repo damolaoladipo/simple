@@ -1,9 +1,9 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
-import { useUsers } from '../../hooks/users/useUsers';
-import { useUser } from '../../hooks/users/useUser';
-import { useCreateUser } from '../../hooks/users/useCreateUser';
-import { useUpdateUser } from '../../hooks/users/useUpdateuser';
-import { useDeleteUser } from '../../hooks/users/useDeleteUser';
+import { useUsers } from '../hooks/user/useUsers';
+import { useUser } from '../hooks/user/useUser';
+import { useCreateUser } from '../hooks/user/useCreateUser';
+import { useUpdateUser } from '../hooks/user/useUpdateuser';
+import { useDeleteUser } from '../hooks/user/useDeleteUser';
 
 
 interface UserContextType {
