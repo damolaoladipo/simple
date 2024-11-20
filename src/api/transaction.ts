@@ -12,6 +12,22 @@ export const getAllTransactions = async (): Promise<ITransaction[]> => {
 };
 
 
+/**
+ * @name getUserTransactions
+ * @description Fetch all transactions associated with a user
+ * @route GET /transaction/:userId
+ * @access Public
+ */
+export const getUserTransactions = async (userId: string): Promise<ITransaction[]> => {
+  try {
+    const response: ApiResponse<ITransaction[]> = await apiClient.get(`/transaction/${userId}`);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.response?.data?.message || `Error fetching transactions for user with ID: ${userId}`);
+  }
+};
+
+
 export const getTransactionById = async (id: string): Promise<ITransaction> => {
   try {
     const response: ApiResponse<ITransaction> = await apiClient.get(`/transactions/${id}`);
