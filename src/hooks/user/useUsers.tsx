@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { getAllUsers } from '../../api/user';
 
 export const useUsers = () => {
