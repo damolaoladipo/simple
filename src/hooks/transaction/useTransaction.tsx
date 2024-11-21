@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getTransactionById } from '../../api/transaction'; 
-import { ITransaction } from '../../utils/interface.util'; 
+import { ITransaction } from '../../utils/transaction.util'; 
 
 export const useTransaction = (id: string) => {
   const [transaction, setTransaction] = useState<ITransaction | null>(null);

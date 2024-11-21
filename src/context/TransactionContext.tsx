@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { ITransaction, TransactionContextType } from "../utils/interface.util";
+import { ITransaction, TransactionContextType } from "../utils/transaction.util";
 import { useTransactions } from "../hooks/transaction/useTransactions";
 import { useTransaction } from "../hooks/transaction/useTransaction";
 import { useCreateTransaction } from "../hooks/transaction/useCreateTransaction";

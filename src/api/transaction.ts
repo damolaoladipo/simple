@@ -1,5 +1,6 @@
 import apiClient from './api';
-import { ApiResponse, ITransaction } from '../utils/interface.util';
+import { ApiResponse, } from '../utils/interface.util';
+import { ITransaction } from '../utils/transaction.util';
 
 
 export const getAllTransactions = async (): Promise<ITransaction[]> => {

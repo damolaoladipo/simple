@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { updateTransactionById } from '../../api/transaction'; 
-import { ITransaction } from '../../utils/interface.util'; 
+import { ITransaction } from '../../utils/transaction.util'; 
 
 export const useUpdateTransaction = () => {
   const [loading, setLoading] = useState<boolean>(false);
