@@ -26,6 +26,7 @@ export const TransactionProvider = ({ children }: { children: React.ReactNode })
   const value: TransactionContextType = {
     transaction,
     transactions,
+    selectedTransaction,
     loading: loadingTransactions || loadingTransaction || creatingTransaction || updatingTransaction || deletingTransaction,
     error: transactionsError || transactionError || createError || updateError || deleteError,
     setTransaction: setSelectedTransaction,

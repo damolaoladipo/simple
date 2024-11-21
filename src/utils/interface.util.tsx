@@ -183,6 +183,7 @@ export interface UserContextType {
   export interface TransactionContextType {
     transaction: ITransaction | null;
     transactions: ITransaction[] | null;
+    selectedTransaction: ITransaction | null
     loading: boolean;
     error: string | null;
     fetchTransactions: (userId: string) => Promise<void>;
