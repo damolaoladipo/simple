@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { forgotPassword } from '../../api/auth';
-import { IForgotPasswordRequest, IForgotPasswordResponse } from '../../utils/interface.util';
+import { IForgotPasswordRequest, IForgotPasswordResponse } from '../../utils/auth.util';
 
 export const useForgotPassword = () => {
   const [response, setResponse] = useState<string | null>(null);

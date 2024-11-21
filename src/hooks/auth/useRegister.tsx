@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { register } from '../../api/auth';
-import { IRegister, IRegisterResponse } from '../../utils/interface.util';
+import { IRegister, IRegisterResponse } from '../../utils/auth.util';
 
 export const useRegister = () => {
   const [loading, setLoading] = useState<boolean>(false);

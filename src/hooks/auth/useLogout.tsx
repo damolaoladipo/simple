@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ILogoutResponse } from "../../utils/interface.util";
+import { ILogoutResponse } from "../../utils/auth.util";
 import { logout } from '../../api/auth';
 
 

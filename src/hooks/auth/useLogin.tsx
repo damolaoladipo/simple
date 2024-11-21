@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ILogin, ILoginResponse } from "../../utils/interface.util";
+import { ILogin, ILoginResponse } from "../../utils/auth.util";
 import { login } from '../../api/auth';
 
 

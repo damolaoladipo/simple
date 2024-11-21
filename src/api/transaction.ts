@@ -1,5 +1,5 @@
 import apiClient from './api';
-import { ApiResponse, } from '../utils/interface.util';
+import { ApiResponse, } from '../utils/auth.util';
 import { ITransaction } from '../utils/transaction.util';
 
 

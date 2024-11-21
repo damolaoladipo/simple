@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode } from 'react';
-import { AuthContextType } from '../utils/interface.util';
+import { AuthContextType } from '../utils/auth.util';
 import { useForgotPassword } from '../hooks/auth/useForgotPassword';
 import { useRegister } from '../hooks/auth/useRegister';
 import { useLogin } from '../hooks/auth/useLogin';
