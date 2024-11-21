@@ -145,7 +145,13 @@ export interface IResetPasswordResponse {
 export interface AuthContextType {
     authToken: string | null;
     user: any | null;
-    login: (authToken: string, user: any) => void;
+    loading: boolean;
+    error: string | null;
+    response: IRegisterResponse | ILoginResponse | string | null; 
+    register: (userData: IRegister) => Promise<void>; 
+    forgotPassword: (email: string) => Promise<void>; 
+    resetPassword: (token: string, newPassword: string) => Promise<void>;
+    login: (loginData: ILogin) => void;
     logout: (message: string) => void;
   }
 export interface UserContextType {
