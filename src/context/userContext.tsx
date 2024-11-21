@@ -16,16 +16,16 @@ export const UserContext = createContext<UserContextType | undefined>(undefined)
 export const UserProvider = ({ children, userId }: { children: ReactNode, userId: string }) => {
   const { users, loading, error } = useUsers();
   const { user, loading: userLoading, error: userError } = useUser(userId)
-  const { updateUser } = useUpdateUser();
+  const { updateUser, updatedUser } = useUpdateUser();
   const { deleteUser } = useDeleteUser();
 
   return (
     <UserContext.Provider
       value={{
+        user,
         users,
         loading: loading || userLoading,
         error: error || userError,
-        user,
         setUser: () => {},
         updateUser,
         deleteUser,

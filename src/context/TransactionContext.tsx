@@ -16,11 +16,11 @@ export const TransactionProvider = ({ children }: { children: React.ReactNode })
 
   const { transaction, fetchTransaction, loading: loadingTransaction, error: transactionError } = useTransaction("");
 
-  const { createNewTransaction, newTransaction, loading: creatingTransaction, error: createError } = useCreateTransaction();
+  const { createNewTransaction, loading: creatingTransaction, error: createError } = useCreateTransaction();
 
-  const { updateTransaction, updatedTransaction, loading: updatingTransaction, error: updateError } = useUpdateTransaction();
+  const { updateTransaction, loading: updatingTransaction, error: updateError } = useUpdateTransaction();
 
-  const { deleteTransaction, DeletedTransaction, loading: deletingTransaction, error: deleteError } = useDeleteTransaction();
+  const { deleteTransaction, loading: deletingTransaction, error: deleteError } = useDeleteTransaction();
 
   
   const value: TransactionContextType = {

@@ -149,10 +149,10 @@ export interface AuthContextType {
     logout: (message: string) => void;
   }
 export interface UserContextType {
+    user: any | null;  
     users: any[];
     loading: boolean;
     error: string | null;
-    user: any | null;
     setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
     updateUser: (userId: string, updatedData: any) => void;
     deleteUser: (userId: string) => void;
