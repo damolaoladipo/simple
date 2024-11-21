@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { updateUserById } from '../../api/user'; 
-import { IUser } from '../../utils/interface.util'; 
+import { IUser } from '../../utils/user.util'; 
 
 export const useUpdateUser = () => {
   const [loading, setLoading] = useState<boolean>(false);

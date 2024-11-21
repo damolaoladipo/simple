@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getUserById } from '../../api/user'; 
-import { IUser } from '../../utils/interface.util'; 
+import { IUser } from '../../utils/user.util'; 
 
 export const useUser = (userId: string) => {
   const [user, setUser] = useState<IUser | null>(null);

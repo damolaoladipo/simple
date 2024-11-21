@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode } from 'react';
-import { IUser, UserContextType } from '../utils/interface.util';
+import { IUser, UserContextType } from '../utils/user.util';
 
 import { useUsers } from '../hooks/user/useUsers';
 import { useUser } from '../hooks/user/useUser';
