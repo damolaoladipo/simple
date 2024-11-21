@@ -8,13 +8,11 @@ import { useDeleteUser } from '../hooks/user/useDeleteUser';
 
 
 
-
-
 export const UserContext = createContext<UserContextType | undefined>(undefined);
 
 
-export const UserProvider = ({ children, userId }: { children: ReactNode, userId: string }) => {
-  
+export const UserProvider = ({ children, userId}: { children: ReactNode, userId: string}) => {
+
   const [ userState, setUser] = React.useState<IUser | null>(null);
   const { user, loading: userLoading, error: userError } = useUser(userId)
   const { users, loading: usersLoading, error: usersError } = useUsers();

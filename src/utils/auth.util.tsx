@@ -54,6 +54,7 @@ export interface IResetPasswordResponse {
 
 
 export interface AuthContextType {
+    userId: string | null;
     authToken: string | null;
     user: any | null;
     loading: boolean;

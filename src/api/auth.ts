@@ -7,7 +7,7 @@ import {
   IRegister, 
   IRegisterResponse, 
   IResetPasswordRequest, 
-  IResetPasswordResponse } from '../utils/interface.util'
+  IResetPasswordResponse } from '../utils/auth.util'
 
 export const login = async (email: string, password: string): Promise<ILoginResponse> => {
   try {

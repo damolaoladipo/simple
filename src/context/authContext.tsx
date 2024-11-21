@@ -5,6 +5,7 @@ import { useRegister } from '../hooks/auth/useRegister';
 import { useLogin } from '../hooks/auth/useLogin';
 import { useLogout } from '../hooks/auth/useLogout';
 import { useResetPassword } from '../hooks/auth/userResetPassword';
+import { UserProvider } from './userContext';
 
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   return (
     <AuthContext.Provider 
     value={{ 
-
+      userId:userLogin?.id ?? null,
       authToken: authToken,
       user: userLogin,
       loading: registerLoading || forgotPasswordLoading || resetPasswordLoading,
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       resetPassword: performResetPassword,
       
      }}>
-      {children}
+       {userLogin ? <UserProvider userId={userLogin.id}>{children}</UserProvider> : children}
     </AuthContext.Provider>
   );
 };
